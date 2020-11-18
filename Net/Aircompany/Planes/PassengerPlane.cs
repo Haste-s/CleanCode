@@ -28,7 +28,7 @@ namespace Aircompany.Planes
             return hashCode;
         }
 
-        public int PassengersCapacityIs()
+        public int GetPassengersCapacity()
         {
             return passengersCapacity;
         }
