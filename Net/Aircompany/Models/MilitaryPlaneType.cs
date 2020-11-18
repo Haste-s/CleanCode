@@ -1,6 +1,6 @@
 ﻿namespace Aircompany.Models
 {
-    public enum MilitaryType
+    public enum MilitaryPlaneType
     {
         FIGHTER,
         BOMBER,
