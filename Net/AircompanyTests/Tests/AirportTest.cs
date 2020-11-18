@@ -54,22 +54,23 @@ namespace AircompanyTests.Tests
             Assert.IsTrue(airport.GetPassengerPlaneWithMaxPassengersCapacity().passengersCapacity <= new PassengerPlane("Boeing-747", 980, 16100, 70500, 242));
         }
 
+        private bool CorrectSortingByMaxLoadCapacity(List<Plane> planesSortedByMaxLoadCapacity)
+        {
+            for (int i = 0; i < planesSortedByMaxLoadCapacity.Count - 1; i++)
+            {
+                if (planesSortedByMaxLoadCapacity[i].GetMaxLoadCapacity() > planesSortedByMaxLoadCapacity[i + 1].GetMaxLoadCapacity())
+                {
+                    return = false;
+                }
+            }
+            return true;
+        }
+
         [Test]
         public void SortingByMaxLoadCapacity()
         {
             Airport airport = new Airport(planes);
-            List<Plane> planesSortedByMaxLoadCapacity = airport.SortByMaxLoadCapacity().ToList();
-            bool nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
-            for (int i = 0; i < planesSortedByMaxLoadCapacity.Count - 1; i++)
-            {
-                Plane currentPlane = planesSortedByMaxLoadCapacity[i];
-                Plane nextPlane = planesSortedByMaxLoadCapacity[i + 1];
-                if (currentPlane.GetMaxLoadCapacity() > nextPlane.GetMaxLoadCapacity())
-                {
-                    nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
-                }
-            }
-            Assert.That(nextPlaneMaxLoadCapacityIsHigherThanCurrent);
+            Assert.That(CorrectSortingByMaxLoadCapacity(airport.SortByMaxLoadCapacity().ToList()));
         }
     }
 }
